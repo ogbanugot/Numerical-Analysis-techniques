@@ -9,7 +9,7 @@ def f(x):
 def bisection(a,b):
        c = (a+b)/2.0
        iteration = 0
-       while (b-a)/2.0:
+       while True:
               iteration+=1
               print("iteration number =",iteration)
               if f(c) == 0:
