@@ -11,7 +11,7 @@ def bisection(a,b):
        iteration = 0
        while True:
               iteration+=1
-              print("iteration number =",iteration)
+              print('Iteration Number {0}: a = {1},  b = {2} , c= {3}'.format(iteration,a,b,c))
               if f(c) == 0:
                       print("the zero is",c)
                       break
