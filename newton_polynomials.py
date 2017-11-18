@@ -4,28 +4,30 @@
     Coefficents----> a = 0....n
     ind = independent variable, P(ind)'''
 #Lets use a list to hold our centers and coefficients, index = 0...n
-x = [1,3,4,4.5]
+xData = [1,3,4,4.5]
 a = [5,-2,0.5,-0.1,0.003]
-ind = 2.5
+x = 2.5
 
-def P1(x,a,ind):
-    P1x = a[0] + (a[1] * (ind - x[0 ]))
-    return P1x
+## module newtonPoly
+'''
+p = evalPoly(a,xData,x).
+Evaluates Newton’s polynomial p at x. The coefficient
+vector {a} can be computed by the function ’coeffts’.
+a = coeffts(xData,yData).
+Computes the coefficients of Newton’s polynomial.
+'''
+def evalPoly(a,xData,x):
+    n = len(xData) - 1 # Degree of polynomial
+    p = a[n]
+    for k in range(1,n+1):
+        p = a[n-k] + (x -xData[n-k])*p
+    return p
 
-def P2(x,a,ind):
-    P2x = P1(x,a,ind) + (a[2] *((ind - x[0])*(ind-x[1])))
-    return P2x
+def coeffts(xData,yData):
+    m = len(xData) # Number of data points
+    a = yData.copy()
+    for k in range(1,m):
+        a[k:m] = (a[k:m] - a[k-1])/(xData[k:m] - xData[k-1])
+    return a
 
-def P3(x,a,ind):
-    P3x = P2(x,a,ind) + (a[3] *(ind - x[0])*(ind-x[1])*(ind-x[2]))
-    return P3x
-
-def P4(x,a,ind):
-    P4x = P3(x,a,ind) + (a[4] *(ind - x[0])*(ind-x[1])*(ind-x[2])*(ind-x[3]))
-    return P4x
-
-
-print("P1(x) = ",P1(x,a,ind))
-print("P2(x) = ",P2(x,a,ind))
-print("P3(x) = ",P3(x,a,ind))
-print("P4(x) = ",P4(x,a,ind))
+print(evalPoly(a,xData,x))
